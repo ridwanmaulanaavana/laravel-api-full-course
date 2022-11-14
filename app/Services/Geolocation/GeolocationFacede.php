@@ -6,10 +6,7 @@ use Illuminate\Support\Facades\Facade;
 use App\Services\Geolocation\Geolocation;
 
 
-/**
- * @method static array  search(string $string)
- * @see Geolocation
- **/
+
 
 class GeolocationFacade extends Facade{
 
