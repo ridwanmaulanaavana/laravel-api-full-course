@@ -31,7 +31,7 @@ class TrustProxies extends Middleware
 
     public function handle(Request $request, Closure $next)
     {
-        dump("hey trust proxy");
+        //dump("hey trust proxy");
         return parent::handle($request,$next);
     }
 }

@@ -20,8 +20,8 @@ class Post extends Model
     }
 
     //ini adalah mutator asli yg diawali kalimat set dan diakhiri attributes
-    public function setTitleAttribute(){
-        
+    public function setTitleAttribute($value){
+        $this->attributes['title'] = strtolower($value);
     }
 
     public function comments(){
