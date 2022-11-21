@@ -10,8 +10,21 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $hidden = [
+        'title'
+    ];
+
+    protected $fillable = [
+        'title',
+        'body',
+    ];
+
     protected $casts = [
         'body' => 'array'
+    ];
+
+    protected $appends = [
+        'title_upper_case'
     ];
 
     // mutator sebagai accessor untuk mengubah value sebelum di store

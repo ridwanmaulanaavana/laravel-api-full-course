@@ -19,7 +19,36 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')
 ->group(function(){
+    // kita akan loop file ini untuk memanggil semua file tanpa perlu dipanggil satu persatu maka
+    //iterate thru the v1 folder revursively
+    // $dirIterator = new RecursiveDirectoryIterator(__DIR__.'/api/v1');//ini dicek foldernya
+    // //kemudian kita akan mengecek file and folder yg ada di dalamnya
+    // /**
+    //  * @var RecursiveIteratorIterator | RecursiveIteratorIterator $it
+    //  */
+    // $it = new \RecursiveIteratorIterator($dirIterator);
+
+    // while($it->valid()){
+        
+    //     if($it->isDot() 
+    //     && $it->isFile()
+    //     && $it->isReadable()
+    //     && $it->current()->getExtension() === 'php'){
+    //         require $it->key();
+    //     }
+    //     $it->next();
+    // }
+
+    
+
+
+    //require the file in each iteration 
+
     require __DIR__.'/api/v1/users.php';
+    require __DIR__.'/api/v1/posts.php';
+    require __DIR__.'/api/v1/comments.php';
+
+
 });
 
 

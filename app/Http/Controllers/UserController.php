@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Models\Users\UserCreated;
 use App\Models\Post;
 use App\Models\User;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Http\Resources\UserResource;
+use App\Repositories\UserRepository;
 
 class UserController extends Controller
 {
@@ -18,6 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        event(new UserCreated(user::factory()->make()));
         return new JsonResponse([
             'data' => 'aaa'
         ]);
@@ -29,9 +33,16 @@ class UserController extends Controller
      * @param  \App\Http\Requests\StoreUserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, UserRepository $repository)
     {
-        //
+        $created = $repository->create($request->only([
+            'name',
+            'email',
+        ]));
+
+        ///
+
+        return new UserResource($created);
     }
 
     /**
